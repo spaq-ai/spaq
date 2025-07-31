@@ -1,0 +1,192 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Organization {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  teams     Team[]
+
+  @@map("organizations")
+}
+
+model Team {
+  id             String           @id @default(cuid())
+  name           String
+  organizationId String
+  organization   Organization     @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  users          User[]
+  events         DecisionEvent[]
+  chains         Chain[]
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+
+  @@map("teams")
+}
+
+model User {
+  id           String         @id @default(cuid())
+  email        String         @unique
+  password     String
+  name         String?
+  role         Role           @default(MEMBER)
+  teamId       String
+  team         Team           @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  events       DecisionEvent[]
+  chains       Chain[]
+  refreshTokens RefreshToken[]
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  @@map("users")
+}
+
+model RefreshToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@map("refresh_tokens")
+}
+
+model DecisionEvent {
+  id             String        @id @default(cuid())
+  contextSnippet String        @db.Text
+  choice         String?
+  rationale      String?       @db.Text
+  metadata       Json
+  source         EventSource   @default(MANUAL)
+  sourceId       String?       // Slack thread ID, Teams message ID, etc.
+  parentId       String?
+  parent         DecisionEvent? @relation("EventHierarchy", fields: [parentId], references: [id])
+  children       DecisionEvent[] @relation("EventHierarchy")
+  teamId         String
+  team           Team          @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  userId         String
+  user           User          @relation(fields: [userId], references: [id])
+  chainNodes     ChainNode[]
+  tags           Tag[]
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  @@index([teamId, createdAt])
+  @@index([userId])
+  @@map("decision_events")
+}
+
+model Chain {
+  id          String      @id @default(cuid())
+  name        String
+  description String?
+  status      ChainStatus @default(DRAFT)
+  teamId      String
+  team        Team        @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  authorId    String
+  author      User        @relation(fields: [authorId], references: [id])
+  nodes       ChainNode[]
+  queries     AgentQuery[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@index([teamId, status])
+  @@map("chains")
+}
+
+model ChainNode {
+  id        String        @id @default(cuid())
+  position  Json          // {x: number, y: number}
+  chainId   String
+  chain     Chain         @relation(fields: [chainId], references: [id], onDelete: Cascade)
+  eventId   String
+  event     DecisionEvent @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  nextNodes String[]      // Array of ChainNode IDs
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  @@unique([chainId, eventId])
+  @@map("chain_nodes")
+}
+
+model Tag {
+  id     String          @id @default(cuid())
+  name   String
+  events DecisionEvent[]
+
+  @@unique([name])
+  @@map("tags")
+}
+
+model AgentQuery {
+  id         String   @id @default(cuid())
+  query      String   @db.Text
+  response   String   @db.Text
+  chains     Chain[]
+  confidence Float    @default(0)
+  feedback   Feedback?
+  userId     String
+  createdAt  DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@map("agent_queries")
+}
+
+model TrainingJob {
+  id         String    @id @default(cuid())
+  status     JobStatus @default(PENDING)
+  modelName  String
+  datasetId  String
+  metrics    Json?
+  error      String?
+  startedAt  DateTime?
+  completedAt DateTime?
+  createdAt  DateTime  @default(now())
+
+  @@map("training_jobs")
+}
+
+enum Role {
+  ADMIN
+  MEMBER
+  VIEWER
+}
+
+enum ChainStatus {
+  DRAFT
+  IN_REVIEW
+  APPROVED
+  ARCHIVED
+}
+
+enum EventSource {
+  MANUAL
+  SLACK
+  TEAMS
+  GOOGLE_DOCS
+  CONFLUENCE
+}
+
+enum Feedback {
+  HELPFUL
+  NOT_HELPFUL
+}
+
+enum JobStatus {
+  PENDING
+  RUNNING
+  COMPLETED
+  FAILED
+}
