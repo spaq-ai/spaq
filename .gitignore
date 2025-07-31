@@ -84,23 +84,8 @@ pids
 # Claude
 .claude/
 
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
-venv/
-.env
+# Temporarily ignore backend
+spaq-backend/
 
 # Performance test script
 fix-performance.sh
-
-# Frontend specific
-spaq-frontend/images/*
-
-# Backend specific
-spaq-backend/.env
-spaq-backend/venv/
-spaq-backend/__pycache__/
