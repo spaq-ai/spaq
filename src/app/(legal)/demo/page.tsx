@@ -42,9 +42,9 @@ export default function DemoPage() {
               <Image 
                 src="/images/spaq-transparent.png" 
                 alt="spaq" 
-                width={56} 
-                height={56} 
-                className="w-14 h-14"
+                width={40} 
+                height={40} 
+                className="w-10 h-10"
               />
               <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
                 spaq
