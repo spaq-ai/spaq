@@ -62,7 +62,7 @@ export default function AboutPage() {
     ],
     links: {
       twitter: "https://twitter.com/elcruzosym",
-      linkedin: "https://linkedin.com/in/ayomide-adekoya",
+      linkedin: "https://linkedin.com/in/elcruzo",
       portfolio: "https://ayomide.ai"
     }
   }
@@ -224,7 +224,6 @@ export default function AboutPage() {
                       alt={founder.name}
                       className="w-48 h-48 rounded-full"
                     />
-                    <div className="absolute inset-0 rounded-full bg-purple-500/20 blur-xl"></div>
                   </div>
                   <div className="flex-1 text-center md:text-left">
                     <h3 className="text-2xl font-bold mb-2">{founder.name}</h3>
