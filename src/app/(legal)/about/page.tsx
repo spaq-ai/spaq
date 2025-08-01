@@ -51,38 +51,27 @@ export default function AboutPage() {
     { number: "< 100ms", label: "Query Response Time" }
   ]
 
-  const team = [
-    {
-      name: "Sarah Chen",
-      role: "Co-founder & CEO",
-      bio: "Former ML engineer at Google. Built decision systems for Fortune 500 companies.",
-      image: "SC"
-    },
-    {
-      name: "Alex Kumar",
-      role: "Co-founder & CTO",
-      bio: "Ex-Stripe engineer. Specializes in distributed systems and real-time data processing.",
-      image: "AK"
-    },
-    {
-      name: "Maria Garcia",
-      role: "Head of AI",
-      bio: "PhD in Machine Learning from Stanford. Published researcher in decision theory.",
-      image: "MG"
-    },
-    {
-      name: "Tom Wilson",
-      role: "Head of Product",
-      bio: "Previously at Notion and Slack. Passionate about tools that augment human capabilities.",
-      image: "TW"
+  const founder = {
+    name: "Ayomide Adekoya",
+    role: "Founder & CEO",
+    bio: "Former ML Engineer at Apple, built auth infra at Meta. Published NLP research at 19. National Science & Technology Medals Foundation Award Winner.",
+    longBio: [
+      "Former ML Engineer at Apple, where I built production telemetry-based PyTorch pipelines serving millions of iOS devices. At Meta, I developed authentication infrastructure and Llama-powered recommendation systems.",
+      "At just 20, I've been recognized with the National Science & Technology Medals Foundation Award, D.E. Shaw Research Fellowship, and Bloomberg Engineering Fellowship. Published NLP research at 19. Currently studying Electrical Engineering & Computer Science at Howard University.",
+      "My mission is to make AI work in the real world - from edge computing in resource-constrained environments to enterprise-scale decision systems. spaq represents the culmination of my experience building AI infrastructure that serves millions."
+    ],
+    links: {
+      twitter: "https://twitter.com/elcruzosym",
+      linkedin: "https://linkedin.com/in/ayomide-adekoya",
+      portfolio: "https://ayomide.ai"
     }
-  ]
+  }
 
   const investors = [
-    "Sequoia Capital",
-    "Y Combinator",
-    "OpenAI Startup Fund",
-    "Founders Fund"
+    "Pre-seed Stage",
+    "Stealth Mode",
+    "Angel Backed",
+    "YC Application F25"
   ]
 
   return (
@@ -213,36 +202,67 @@ export default function AboutPage() {
             </div>
           </motion.div>
 
-          {/* Team Section */}
+          {/* Founder Section */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             className="mb-20"
           >
-            <h2 className="text-3xl font-bold text-center mb-4">Meet the Team</h2>
-            <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-              We're a team of engineers, researchers, and product builders who've experienced 
-              the pain of lost institutional knowledge firsthand.
-            </p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {team.map((member, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-neutral-900/50 rounded-xl p-6 border border-neutral-800 hover:border-neutral-700 transition group"
-                >
-                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4 group-hover:scale-110 transition">
-                    {member.image}
+            <h2 className="text-3xl font-bold text-center mb-12">Meet the Founder</h2>
+            <div className="max-w-4xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="bg-neutral-900/50 rounded-2xl p-8 border border-neutral-800"
+              >
+                <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
+                  <div className="relative flex-shrink-0">
+                    <img
+                      src="/bitmoji.png"
+                      alt={founder.name}
+                      className="w-48 h-48 rounded-full"
+                    />
+                    <div className="absolute inset-0 rounded-full bg-purple-500/20 blur-xl"></div>
                   </div>
-                  <h3 className="font-semibold text-center mb-1">{member.name}</h3>
-                  <p className="text-sm text-purple-400 text-center mb-3">{member.role}</p>
-                  <p className="text-sm text-gray-400 text-center">{member.bio}</p>
-                </motion.div>
-              ))}
+                  <div className="flex-1 text-center md:text-left">
+                    <h3 className="text-2xl font-bold mb-2">{founder.name}</h3>
+                    <p className="text-purple-400 mb-4">{founder.role}</p>
+                    <div className="space-y-3 text-gray-300">
+                      {founder.longBio.map((paragraph, index) => (
+                        <p key={index}>{paragraph}</p>
+                      ))}
+                    </div>
+                    <div className="flex flex-wrap gap-2 mt-6 justify-center md:justify-start">
+                      <a 
+                        href={founder.links.twitter} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="px-4 py-2 bg-neutral-800 hover:bg-neutral-700 rounded-lg transition text-sm"
+                      >
+                        Twitter
+                      </a>
+                      <a 
+                        href={founder.links.linkedin} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 bg-neutral-800 hover:bg-neutral-700 rounded-lg transition text-sm"
+                      >
+                        LinkedIn
+                      </a>
+                      <a 
+                        href={founder.links.portfolio} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg transition text-sm"
+                      >
+                        Portfolio
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
 
@@ -253,7 +273,7 @@ export default function AboutPage() {
             viewport={{ once: true }}
             className="mb-20"
           >
-            <h2 className="text-3xl font-bold text-center mb-12">Backed by the Best</h2>
+            <h2 className="text-3xl font-bold text-center mb-12">Our Journey</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {investors.map((investor, index) => (
                 <motion.div
