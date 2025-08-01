@@ -784,9 +784,7 @@ const chain = await spaq.chains.create({
           >
             {/* Demo Video Placeholder */}
             <Link 
-              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" 
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/demo"
               className="aspect-video bg-black/50 flex items-center justify-center cursor-pointer group hover:bg-black/70 transition-colors"
             >
               <div className="text-center">
