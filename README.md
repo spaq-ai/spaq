@@ -2,18 +2,19 @@
 
 <div align="center">
   <img src="public/images/spaq-transparent.png" alt="spaq logo" width="120" />
-  
-  <h3>Transform your team's decisions into searchable, actionable intelligence</h3>
-  
+
+<h3>Transform your team's decisions into searchable, actionable intelligence</h3>
+
   [![Next.js](https://img.shields.io/badge/Next.js-15.4.5-black?style=flat-square&logo=next.js)](https://nextjs.org/)
   [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
   [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
   [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
+
 </div>
 
 ## 🚀 Overview
 
-spaq is a revolutionary decision intelligence platform that captures, connects, and learns from every choice your team makes. By integrating with your existing tools, spaq builds a searchable knowledge graph of decisions, ensuring critical insights are never lost.
+spaq is a decision intelligence platform that captures, connects, and learns from every choice your team makes. By integrating with your existing tools, spaq builds a searchable knowledge graph of decisions, ensuring critical insights are never lost.
 
 ## ✨ Features
 
@@ -37,7 +38,7 @@ spaq is a revolutionary decision intelligence platform that captures, connects, 
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/spaq-frontend.git
+git clone https://github.com/spaq-ai/spaq.git
 cd spaq-frontend
 
 # Install dependencies
