@@ -1331,7 +1331,7 @@ for team, stats in analysis.items():
           >
             <div className="flex items-center gap-2 mb-4">
               <Image 
-                src="/images/spaq-transparent.png" 
+                src="/icon.png" 
                 alt="spaq" 
                 width={56} 
                 height={56} 

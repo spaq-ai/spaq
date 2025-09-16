@@ -1,7 +1,7 @@
 # spaq - AI-Powered Decision Intelligence Platform
 
 <div align="center">
-  <img src="public/images/spaq-transparent.png" alt="spaq logo" width="120" />
+  <img src="public/icon.png" alt="spaq logo" width="120" />
 
 <h3>Transform your team's decisions into searchable, actionable intelligence</h3>
 
@@ -39,7 +39,7 @@ spaq is a decision intelligence platform that captures, connects, and learns fro
 ```bash
 # Clone the repository
 git clone https://github.com/spaq-ai/spaq.git
-cd spaq-frontend
+cd spaq
 
 # Install dependencies
 npm install
@@ -95,7 +95,7 @@ spaq-frontend/
 
 ### Deploy to Vercel
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/spaq-frontend)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/spaq-ai/spaq.git)
 
 1. Click the button above or go to [vercel.com](https://vercel.com)
 2. Import your GitHub repository

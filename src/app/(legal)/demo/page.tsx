@@ -40,7 +40,7 @@ export default function DemoPage() {
           >
             <div className="flex items-center justify-center gap-2 mb-8">
               <Image 
-                src="/images/spaq-transparent.png" 
+                src="/icon.png" 
                 alt="spaq" 
                 width={40} 
                 height={40} 

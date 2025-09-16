@@ -65,7 +65,7 @@ export default function DashboardLayout({
               !open && "justify-center"
             )}>
               <Image 
-                src="/images/spaq-transparent.png" 
+                src="/icon.png" 
                 alt="spaq" 
                 width={48} 
                 height={48} 

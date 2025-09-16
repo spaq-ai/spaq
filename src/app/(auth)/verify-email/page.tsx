@@ -60,7 +60,7 @@ function VerifyEmailContent() {
         <Link href="/" className="flex items-center justify-center gap-2 mb-8">
           <div className="relative">
             <Image 
-              src="/images/spaq-transparent.png" 
+              src="/icon.png" 
               alt="spaq.ai" 
               width={56} 
               height={56} 

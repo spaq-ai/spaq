@@ -63,7 +63,7 @@ export default function LoginPage() {
             <div className="relative">
               <div className="absolute inset-0 bg-purple-500 blur-xl opacity-50 group-hover:opacity-75 transition"></div>
               <Image 
-                src="/images/spaq-transparent.png" 
+                src="/icon.png" 
                 alt="spaq" 
                 width={64} 
                 height={64} 

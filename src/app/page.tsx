@@ -77,7 +77,7 @@ export default function Home() {
               className="flex items-center space-x-2"
             >
               <Image 
-                src="/images/spaq-transparent.png" 
+                src="/icon.png" 
                 alt="spaq" 
                 width={48} 
                 height={48} 
@@ -856,7 +856,7 @@ const chain = await spaq.chains.create({
             <div className="col-span-2">
               <div className="flex items-center space-x-2 mb-4">
                 <Image 
-                  src="/images/spaq-transparent.png" 
+                  src="/icon.png" 
                   alt="spaq" 
                   width={32} 
                   height={32} 

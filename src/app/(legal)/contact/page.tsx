@@ -106,7 +106,7 @@ export default function ContactPage() {
           >
             <div className="flex items-center justify-center gap-2 mb-6">
               <Image 
-                src="/images/spaq-transparent.png" 
+                src="/icon.png" 
                 alt="spaq" 
                 width={56} 
                 height={56} 
