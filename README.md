@@ -186,7 +186,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - Documentation: [docs.spaq.ai](https://docs.spaq.ai)
 - Email: support@spaq.ai
-- Twitter: [@spaq_ai](https://twitter.com/spaq_ai)
+- Twitter: [@spaqai](https://twitter.com/spaqai)
 
 ---
 
